@@ -1,0 +1,10 @@
+use learn_java_db;
+create table customer_Details
+(
+customer_id int primary Key auto_increment,
+name varchar(100),
+salary double,
+joining_date date
+);
+
+select * from customer_Details;
