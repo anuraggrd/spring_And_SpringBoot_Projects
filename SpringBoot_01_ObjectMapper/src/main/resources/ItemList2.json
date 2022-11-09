@@ -1,0 +1,11 @@
+
+	{
+		"item" : 1,
+		"amount": 100,
+		"name" : "tshirt",
+		"regularPrice":29.29,
+		"itemState": "new",
+		"couponApplicable": true 
+	}
+
+

@@ -1,0 +1,12 @@
+1. https://www.youtube.com/watch?v=H9lJ1m6bY3g&ab_channel=ChargeAhead
+2.https://github.com/eugenp/tutorials/blob/master/json-modules/json-2/src/main/java/com/baeldung/jsontojavaclass/JsonToJavaClassConversion.java
+3.https://www.baeldung.com/java-generate-class-from-json#:~:text=JSON%20to%20Java%20Class%20Conversion&text=First%2C%20we'll%20create%20a,POJO%20class%20would%20belong%20and
+
+<dependency>
+			<groupId>org.jsonschema2pojo</groupId>
+			<artifactId>jsonschema2pojo-core</artifactId>
+			<version>0.4.35</version>
+		</dependency>
+		
+		
+		https://www.youtube.com/watch?v=H9lJ1m6bY3g&ab_channel=ChargeAhead

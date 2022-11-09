@@ -1,0 +1,28 @@
+[
+	{
+		"item" : 1,
+		"amount": 100,
+		"name" : "tshirt",
+		"regularPrice":29.29,
+		"itemState": "new",
+		"couponApplicable": true 
+	},
+	{
+		"item" : 2,
+		"amount": 100,
+		"name" : "pant",
+		"regularPrice":29.29,
+		"itemState": "new",
+		"couponApplicable": true 
+	},
+	{
+		"item" : 3,
+		"amount": 50,
+		"name": "kurta",
+		"regularPrice":29.29,
+		"itemState": "new",
+		"couponApplicable": true 
+	}
+
+
+]
