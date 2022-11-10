@@ -46,7 +46,7 @@ public class SpringBootObjectMapperApplication {
 		 */
 		
 		//System.out.println(om.writeValueAsString(getObjectFromJson()));
-		reflectionMethod2();
+		reflectionMethod5();
 		 
 		 
 	}
@@ -272,7 +272,7 @@ public class SpringBootObjectMapperApplication {
 	public static <T>  T reflectionMethod5() throws IOException {
 		// ObjectMapper om = new ObjectMapper();
 		TypeReference<T> typeReference = null;
-		String path = "src/main/resources/ItemList2.json";
+		String path = "src/main/resources/demo.json";
 		FileInputStream inputStream = null;
 		String result = new String(Files.readAllBytes(Paths.get(path)));
 		try {
@@ -290,13 +290,18 @@ public class SpringBootObjectMapperApplication {
 	    
 	    System.out.println(map.getClass().getSimpleName());
 	    
-		
+	    System.out.println("-------------------------------------");
 		  for (Map.Entry<String, Object> m : map.entrySet()) { 
-			  //Object object =		  m.getValue(); 
-			 // System.out.println(object.getClass().getSimpleName());
-			  System.out.println(m.getKey() +" "+ m.getValue());
+			  System.out.println("----------1---------------------------");
+				/* System.out.println(object.getClass().getSimpleName()); */
+			  System.out.println("----------2--------------------------");
+			  //System.out.println(m.getKey() +" "+ m.getValue());
+			  Class<? extends String> class1 = m.getKey().getClass() ;
+			  
+			  
 		  
 		  }
+		  System.out.println("-------------------------------------");
 		 
 	    /*
 		//T randomClass = om.readValue(result, typeReference);

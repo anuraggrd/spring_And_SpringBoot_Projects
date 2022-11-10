@@ -1,0 +1,11 @@
+{"person": {
+  "name": "Joe",
+  "age": "25",
+  "cars": {
+    "car": [
+      {"brand": "Toyota", "year": "2020", "color": "red"},
+      {"brand": "Tesla", "year": "2019", "color": "blue"},
+      {"brand": "Honda", "year": "2015", "color": "white"}
+    ]
+  }
+}}
