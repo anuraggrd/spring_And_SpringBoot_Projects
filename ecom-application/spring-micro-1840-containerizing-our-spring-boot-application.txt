@@ -1,0 +1,14 @@
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=<IMAGE-NAME>
+
+
+to build the docker image : mvn spring-boot:build-image "-Dspring-boot.build-image.imageName=anuraggrd/ecom_application"
+to push the local image to docker : docker push anuraggrd/ecom_application
+docker images
+docker run -d -p 8080:8080 anuraggrd/ecom_application
+--> it will give container id
+left hand side 8080 is container port 
+right side 8080 is local port
+docker ps
+give u list of container id 
+
+docker logs containerid
