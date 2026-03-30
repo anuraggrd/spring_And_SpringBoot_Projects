@@ -61,6 +61,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -132,7 +133,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774895642349</updated>
       <workItem from="1774895643978" duration="3824000" />
-      <workItem from="1774899935891" duration="1205000" />
+      <workItem from="1774899935891" duration="1576000" />
     </task>
     <servers />
   </component>
