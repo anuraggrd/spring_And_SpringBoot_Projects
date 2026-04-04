@@ -32,23 +32,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
         return userservice.fetchUser(id).map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody UserRequest user) {
-        Boolean isUpdated = userservice.updateUser(id, user);
+    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody UserRequest user) {
+        Boolean isUpdated = userservice.updateUser(String.valueOf(id), user);
         return isUpdated ?
                 ResponseEntity.ok("User Update") :
                 ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
-        Boolean isDeleted = userservice.removeUser(id );
+    public ResponseEntity<String> deleteUser(@PathVariable String id) {
+        Boolean isDeleted = userservice.removeUser(String.valueOf(id));
         return isDeleted ?
                 ResponseEntity.ok("User Deleted") :
                 ResponseEntity.notFound().build();

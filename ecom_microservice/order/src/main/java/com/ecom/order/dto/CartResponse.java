@@ -1,6 +1,6 @@
 package com.ecom.order.dto;
 
-import com.app.ecom.entity.Product;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class CartResponse {
     private Integer quantity;
-    private Product product;
+    private String productId;
     private BigDecimal amount;
 }

@@ -29,12 +29,12 @@ public class UserService {
         return save != null ? true : false;
     }
 
-    public Optional<UserResponse> fetchUser(Long id) {
+    public Optional<UserResponse> fetchUser(String id) {
 
         return userDb.findById(id).map(UserService::entityToReponse);
     }
 
-    public Boolean updateUser(Long id, UserRequest updateduser) {
+    public Boolean updateUser(String id, UserRequest updateduser) {
         return userDb.findById(id).map(existinguser -> {
             updateUserFromRequest(existinguser, updateduser);
             userDb.save(existinguser);
@@ -43,7 +43,7 @@ public class UserService {
 
     }
 
-    public Boolean removeUser(Long id) {
+    public Boolean removeUser(String id) {
         User o = (User) userDb.findById(id).get();
         userDb.delete(o);
         return o != null ? true : false;

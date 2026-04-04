@@ -1,8 +1,10 @@
 package com.ecom.order.controller;
 
-import com.app.ecom.dto.CartRequest;
-import com.app.ecom.dto.CartResponse;
-import com.app.ecom.service.CartService;
+
+
+import com.ecom.order.dto.CartRequest;
+import com.ecom.order.dto.CartResponse;
+import com.ecom.order.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

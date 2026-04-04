@@ -18,12 +18,10 @@ public class Cart {
     private Long id;
     private Integer quantity;
     private BigDecimal price;
-    @ManyToOne
-    @JoinColumn(name ="user_id",nullable = false)
-    private User user;
-    @ManyToOne
-    @JoinColumn(name ="product_id", nullable = false)
-    private Product product;
+
+    private String userId;
+
+    private String productId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
