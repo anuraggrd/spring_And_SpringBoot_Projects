@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: springextconfig_p1
+
+server:
+  port: 8081
+
+#build:
+#  version: 345
+#  buidNum: 303
+#  packagedetails: jar
+#
+#framworkdetails:
+#  java_version: 11
+#  springbootversion: 3.1.5
+
+build:
+  version:  ${version}
+  buidNum:  ${buildnum}
+  packagedetails:  ${pcktype}
+
+framworkdetails:
+  java_version: ${javaversion}
+  springbootversion: ${springversion}
