@@ -41,3 +41,9 @@ java -Dspring.profiles.active="dev" -Dversion=456 -Dbuildnum=404 -Dpcktype=jar -
 3.common line arguments
 -------------------------------------------
 java -jar target/springextconfig_p1-0.0.1-SNAPSHOT.jar --spring.profiles.active="dev" --version=567 --buildnum=505 --pcktype=jar --javaversion=121 --springversion="5.1.5"
+---------------------------------
+http://localhost:8888/springextconfig_p1/default (dev yml file) (after runing the config server , this url is used to access the application.yml or properties files)
+http://localhost:8888/springextconfig_p1/dev (dev yml file) (after runing the config server , this url is used to access the application.yml or properties files)
+
+these files springextconfig_p1.yml , springextconfig_p1-dev.yml present in the git repository spring_And_SpringBoot_Projects branch ; ecomapp
+Note : springextconfig_p1(is the config client or application erver)
