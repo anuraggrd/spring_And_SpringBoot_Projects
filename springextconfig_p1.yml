@@ -1,7 +1,7 @@
 build:
   version: 123
   buidNum: 101
-  packagedetails: jar
+  packagedetails: default-jar
 
 framworkdetails:
   java_version: 21
