@@ -1,8 +1,0 @@
-build:
-  version: 234
-  buidNum: 202
-  packagedetails: jar
-
-framworkdetails:
-  java_version: 08
-  springbootversion: 3.1.5
