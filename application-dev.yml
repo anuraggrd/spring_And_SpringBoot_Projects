@@ -1,8 +1,0 @@
-build:
-  version:  ${version}
-  buidNum:  ${buildnum}
-  packagedetails:  ${pcktype}
-
-framworkdetails:
-  java_version: ${javaversion}
-  springbootversion: ${springversion}
