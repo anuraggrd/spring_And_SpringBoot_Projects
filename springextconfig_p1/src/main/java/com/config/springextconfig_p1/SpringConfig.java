@@ -1,14 +1,15 @@
 package com.config.springextconfig_p1;
 
-import lombok.AllArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@RefreshScope
 public class SpringConfig {
     private final ConfigPojo pojo;
 

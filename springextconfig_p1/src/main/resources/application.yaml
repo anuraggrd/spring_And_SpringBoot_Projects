@@ -5,6 +5,12 @@ spring:
     import: "optional:configserver:http://localhost:8888/"
   profiles:
     active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
 server:
   port: 8081
 
