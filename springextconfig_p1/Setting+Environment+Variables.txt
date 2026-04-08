@@ -47,3 +47,9 @@ http://localhost:8888/springextconfig_p1/dev (dev yml file) (after runing the co
 
 these files springextconfig_p1.yml , springextconfig_p1-dev.yml present in the git repository spring_And_SpringBoot_Projects branch ; ecomapp
 Note : springextconfig_p1(is the config client or application erver)
+
+Store the configuration
+1. git
+2. database
+3.in file system
+
