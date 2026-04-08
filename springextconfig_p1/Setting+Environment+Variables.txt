@@ -52,4 +52,8 @@ Store the configuration
 1. git
 2. database
 3.in file system
+4. .env files
 
+create the key ketstore files
+encrypt and decrypt the configuration 
+use the spring bus to refresh the configuration without restart across all micro services 
