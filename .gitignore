@@ -56,3 +56,6 @@ bin/
 
 ### VS Code ###
 .vscode/
+# Ignore sibling Spring Cloud demo projects
+springCloudConceptsEmbarkx/consumer/
+springCloudConceptsEmbarkx/provider/
