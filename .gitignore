@@ -57,4 +57,9 @@ bin/
 ### VS Code ###
 .vscode/
 # Ignore sibling Spring Cloud demo projects
-springCloudConceptsEmbarkx/
+springCloudConceptsEmbarkx/*/.gitattributes
+springCloudConceptsEmbarkx/*/.gitignore
+springCloudConceptsEmbarkx/*/*.class
+springCloudConceptsEmbarkx/*/mvn*
+springCloudConceptsEmbarkx/*/*/*/maven-wrapper.*
+
