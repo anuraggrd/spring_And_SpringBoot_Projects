@@ -1,0 +1,59 @@
+
+way to set the configuration variables/ properties Precedence Order
+--------------------------------------------------------------------
+→ Command-line arguments (--build.id=12345)
+→ Java system properties (-Dbuild.id=12345)
+→ OS environment variables (export BUILD_ID=12345)
+→ application.properties or application.yml
+→ Spring Cloud Config Server (if used)
+→ Default values inside the application cod
+
+
+This is way of using OS environment_variable(environment_variables)
+-------------------------------------------
+Linux/macOS (Terminal)
+export BUILD_ID=12345
+export BUILD_VERSION=1.0.0
+export BUILD_NAME=ProductService
+mvnw clean package
+java -jar target/app.jar
+
+Windows (Command Prompt)
+set BUILD_ID=12345
+set BUILD_VERSION=1.0.0
+set BUILD_NAME=ProductService
+mvnw clean package
+java -jar target/app.jar
+
+Windows (PowerShell)
+$env:BUILD_ID="12345"
+$env:BUILD_VERSION="1.0.0"
+$env:BUILD_NAME="ProductService"
+java -jar target/app.jar
+
+-------------------------------------------
+2.JVM System properties
+-------------------------------------------
+java -Dversion=456 -Dbuildnum=404 -Dpcktype=jar -Djavaversion=17 -Dspringversion="4.1.5" -jar target/springextconfig_p1-0.0.1-SNAPSHOT.jar
+java -Dspring.profiles.active="dev" -Dversion=456 -Dbuildnum=404 -Dpcktype=jar -Djavaversion=17 -Dspringversion="4.1.5" -jar target/springextconfig_p1-0.0.1-SNAPSHOT.jar
+
+-------------------------------------------
+3.common line arguments
+-------------------------------------------
+java -jar target/springextconfig_p1-0.0.1-SNAPSHOT.jar --spring.profiles.active="dev" --version=567 --buildnum=505 --pcktype=jar --javaversion=121 --springversion="5.1.5"
+---------------------------------
+http://localhost:8888/springextconfig_p1/default (dev yml file) (after runing the config server , this url is used to access the application.yml or properties files)
+http://localhost:8888/springextconfig_p1/dev (dev yml file) (after runing the config server , this url is used to access the application.yml or properties files)
+
+these files springextconfig_p1.yml , springextconfig_p1-dev.yml present in the git repository spring_And_SpringBoot_Projects branch ; ecomapp
+Note : springextconfig_p1(is the config client or application erver)
+
+Store the configuration
+1. git
+2. database
+3.in file system
+4. .env files
+
+create the key ketstore files
+encrypt and decrypt the configuration 
+use the spring bus to refresh the configuration without restart across all micro services 

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: springConfigServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/anuraggrd/spring_And_SpringBoot_Projects
+          default-label: ecomapp
+server:
+  port: 8888
+
+

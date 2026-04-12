@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: springextconfig_p1
+  config:
+    import: "optional:configserver:http://localhost:8888/"
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
+server:
+  port: 8081
+
+build:
+  version: 123
+  buidNum: 101
+  packagedetails: jar
+
+framworkdetails:
+  java_version: 21
+  springbootversion: 3.1.5

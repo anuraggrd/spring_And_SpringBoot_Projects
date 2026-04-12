@@ -1,0 +1,8 @@
+build:
+  version: 456
+  buidNum: 404
+  packagedetails: dev-updated-v10-jar
+
+framworkdetails:
+  java_version: 22
+  springbootversion: 3.1.5
