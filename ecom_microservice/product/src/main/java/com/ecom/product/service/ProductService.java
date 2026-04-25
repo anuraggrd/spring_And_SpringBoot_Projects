@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -69,4 +70,12 @@ public class ProductService {
             return true;
         }).orElse(false);
     }
+
+    public ProductResponse getProductById(Long id){
+//        productDb.findById(id).map(existingproduct -> {
+//            return mapToResponse(existingproduct);
+        Optional<Product> entity =  productDb.findByIdAndActiveTrue(id);
+        return entity.map(en -> mapToResponse(en)).orElse(null);// != null? mapToResponse(entity): null;
+        }
+
 }

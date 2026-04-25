@@ -1,13 +1,21 @@
 package com.ecom.order.service;
 
 
+import com.ecom.order.RestConfigClients.ProductHttpInterface;
+import com.ecom.order.RestConfigClients.UserHttpInterface;
 import com.ecom.order.dto.CartRequest;
 import com.ecom.order.dto.CartResponse;
+import com.ecom.order.dto.ProductResponse;
+import com.ecom.order.dto.UserResponse;
 import com.ecom.order.entity.Cart;
 import com.ecom.order.repository.CartRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.XSlf4j;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,23 +28,25 @@ import java.util.stream.Collectors;
 public class CartService {
 
     private final CartRepository cartRepo;
+    private final ProductHttpInterface productClient;
+    private final UserHttpInterface userClient;
+
    // private final ProductRepository productRepo;
    // private final UserRepository userRepo;
 
-    public Boolean addItemToCart(Long userId, CartRequest request) {
+    public Boolean addItemToCart(String userId, CartRequest request) {
 
-//        Optional<Product> productopt = productRepo.findById(request.getProductId());
-//        if (productopt.isEmpty())
-//            return false;
-//        Product existingProduct = productopt.get();
-//        if (existingProduct.getStockQuantity() < (request.getQuantity() * 1L))
-//            return false;
-//
-//        Optional<User> userOpt = userRepo.findById(userId);
-//        if (userOpt.isEmpty())
-//            return false;
-//
-//        User existingUser = userOpt.get();
+        ProductResponse productopt = productClient.getproductDetails(request.getProductId());
+        if (productopt == null)
+            return false;
+System.out.println(productopt);
+        if (productopt.getStockQuantity() < (request.getQuantity() * 1L))
+            return false;
+
+        UserResponse  userOpt = userClient.getUser(String.valueOf(userId));
+        if (userOpt== null)
+            return false;
+
         String existingUserId = String.valueOf(userId);
         String existingProductId = String.valueOf(request.getProductId());
         Cart existingCart = cartRepo.findByUserIdAndProductId(existingUserId, existingProductId);
@@ -66,7 +76,7 @@ public class CartService {
         return true;
     }
 
-    public List<CartResponse> fetchCartItems(Long userId) {
+    public List<CartResponse> fetchCartItems(String userId) {
 
       //  Optional<User> userOpt = userRepo.findById(userId);
       //  User existingUser = userOpt.get();
@@ -86,4 +96,5 @@ public class CartService {
         cartRepo.deleteByUserId(userId);
        // userRepo.findById(Long.valueOf(userId)).ifPresent(cartRepo::deleteByUserId);
     }
+
 }

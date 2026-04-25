@@ -50,5 +50,16 @@ public class ProductController {
         return isdeleted ?  ResponseEntity.ok("Product deleted"): ResponseEntity.notFound().build();
 
     }
+    @GetMapping("/{id}")
+    public  ResponseEntity<ProductResponse> getproductDetails(@PathVariable Long id){
+        System.out.println("Id " +id);
+        ProductResponse   productResponse =  service.getProductById(id);
+        System.out.println(productResponse);
+        ResponseEntity<ProductResponse> productResponseResponseEntity=  productResponse != null ?
+                new ResponseEntity<>(productResponse, HttpStatus.CREATED) :
+                ResponseEntity.notFound().build();
+      return productResponseResponseEntity;
+
+    }
 
 }

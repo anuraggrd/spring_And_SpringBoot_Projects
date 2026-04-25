@@ -20,7 +20,7 @@ public class CartController {
 
     @PostMapping
     public ResponseEntity<String> addToCart(
-            @RequestHeader("x-user-id") Long userId,
+            @RequestHeader("x-user-id") String userId,
             @RequestBody CartRequest request
     ) {
         return cartservice.addItemToCart(userId, request) ?
@@ -42,7 +42,7 @@ public class CartController {
 
     @GetMapping
     public ResponseEntity<List<CartResponse>> getCartitems(
-            @RequestHeader("x-user-id") Long userId
+            @RequestHeader("x-user-id") String userId
     ) {
         List<CartResponse> listCartItems = cartservice.fetchCartItems(userId);
         return ResponseEntity.ok(listCartItems) ;

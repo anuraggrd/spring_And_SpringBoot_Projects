@@ -28,7 +28,7 @@ public class OrderService {
 
     public Optional<OrderResponse> addOrder(String userId) {
         //validate the cartItem
-        List<CartResponse> cartItems = cartservice.fetchCartItems(Long.valueOf(userId));
+        List<CartResponse> cartItems = cartservice.fetchCartItems(userId);
         if (cartItems.isEmpty()){
             return Optional.empty();
         }

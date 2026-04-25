@@ -24,7 +24,7 @@ public class HttpInterfaceConfig {
 
     @Bean
     public ProviderHttpInterface webClientHttpInterface(WebClient.Builder webClientBuilder) {
-        WebClient webClient = webClientBuilder.baseUrl("http://localhost:8081").build();
+        WebClient webClient = webClientBuilder.baseUrl("http://provider").build();
         WebClientAdapter adapter = WebClientAdapter.create(webClient);
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
 
