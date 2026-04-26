@@ -11,6 +11,7 @@ import com.ecom.order.entity.Cart;
 import com.ecom.order.repository.CartRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.extern.slf4j.XSlf4j;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class CartService {
 
     private final CartRepository cartRepo;
@@ -35,11 +37,12 @@ public class CartService {
    // private final UserRepository userRepo;
 
     public Boolean addItemToCart(String userId, CartRequest request) {
-
+        log.info("userid :-" + userId);
+        log.info("productId :-" + request.getProductId());
         ProductResponse productopt = productClient.getproductDetails(request.getProductId());
         if (productopt == null)
             return false;
-System.out.println(productopt);
+            System.out.println(productopt);
         if (productopt.getStockQuantity() < (request.getQuantity() * 1L))
             return false;
 

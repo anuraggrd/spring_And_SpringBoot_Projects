@@ -14,13 +14,6 @@ import java.util.Optional;
 
 @Configuration
 public class ProductHttpInterfaceConfig {
-    
-
-    @Bean
-    @LoadBalanced
-    public RestClient.Builder restClientBuilder() {
-        return RestClient.builder();
-    }
 
     @Bean
     public ProductHttpInterface restClientHttpInterface(RestClient.Builder restClientBuilder) {
