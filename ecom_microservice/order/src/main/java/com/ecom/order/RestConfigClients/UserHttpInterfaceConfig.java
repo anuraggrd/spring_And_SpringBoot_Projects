@@ -30,8 +30,7 @@ import java.util.Optional;
 public class UserHttpInterfaceConfig {
     @Bean
     public UserHttpInterface restUserClientHttpInterface(RestClient.Builder restClientBuilder) {
-        RestClient restClient = restClientBuilder
-                .baseUrl("http://user")
+        RestClient restClient = restClientBuilder.baseUrl("http://user-service")
                 .defaultStatusHandler(HttpStatusCode::is4xxClientError,
                         ((request, response) -> Optional.empty()))
                 .build();

@@ -9,6 +9,7 @@ import com.ecom.order.dto.ProductResponse;
 import com.ecom.order.dto.UserResponse;
 import com.ecom.order.entity.Cart;
 import com.ecom.order.repository.CartRepository;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,13 +33,15 @@ public class CartService {
     private final CartRepository cartRepo;
     private final ProductHttpInterface productClient;
     private final UserHttpInterface userClient;
+    int attempt = 0;
 
-   // private final ProductRepository productRepo;
-   // private final UserRepository userRepo;
 
+//    @CircuitBreaker(name = "productService", fallbackMethod = "addToCartFallback")
+   @Retry(name = "retryBreaker", fallbackMethod = "addToCartFallback")
     public Boolean addItemToCart(String userId, CartRequest request) {
         log.info("userid :-" + userId);
         log.info("productId :-" + request.getProductId());
+       System.out.println("ATTEMPT COUNT: " + ++attempt);
         ProductResponse productopt = productClient.getproductDetails(request.getProductId());
         if (productopt == null)
             return false;
@@ -71,6 +74,13 @@ public class CartService {
        // productRepo.save(existingProduct);
         return true;
     }
+    public Boolean addToCartFallback(String userId,
+                                     CartRequest request,
+                                     Throwable throwable) {
+        log.error("Fallback while adding product {} to cart for user {}",
+                request.getProductId(), userId, throwable);
+        return false;
+    }
 
     public boolean deletecartItem(Long userId, Long productId){
 
@@ -99,5 +109,7 @@ public class CartService {
         cartRepo.deleteByUserId(userId);
        // userRepo.findById(Long.valueOf(userId)).ifPresent(cartRepo::deleteByUserId);
     }
+
+
 
 }

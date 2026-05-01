@@ -17,7 +17,7 @@ public class ProductHttpInterfaceConfig {
 
     @Bean
     public ProductHttpInterface restClientHttpInterface(RestClient.Builder restClientBuilder) {
-        RestClient restClient = restClientBuilder.baseUrl("http://product")
+        RestClient restClient = restClientBuilder.baseUrl("http://product-service")
                 .defaultStatusHandler(HttpStatusCode::is4xxClientError,
                         ((request,response)-> Optional.empty()))
         .build();

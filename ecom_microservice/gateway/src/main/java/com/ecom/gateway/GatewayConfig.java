@@ -8,8 +8,25 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import reactor.core.publisher.Mono;
 
+import java.net.InetSocketAddress;
+
 @Configuration
 public class GatewayConfig {
+    @Bean
+    public RedisRateLimiter redisRateLimiter() {
+        return new RedisRateLimiter(10,20,1);
+    }
+
+    @Bean
+    public KeyResolver ipKeyResolver() {
+        return exchange -> {
+            InetSocketAddress remoteAddress = exchange.getRequest().getRemoteAddress();
+            String key = remoteAddress != null && remoteAddress.getAddress() != null
+                    ? remoteAddress.getAddress().getHostAddress()
+                    : "anonymous";
+            return Mono.just(key);
+        };
+    }
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
@@ -20,7 +37,13 @@ public class GatewayConfig {
                                         .setRetries(10)
                                         .setMethods(HttpMethod.GET)
                                 )
-                               )
+                                .requestRateLimiter(config -> config
+                                        .setRateLimiter(redisRateLimiter())
+                                        .setKeyResolver(ipKeyResolver())
+                                        )
+                                .circuitBreaker(config -> config
+                                        .setName("ecomBreaker")
+                                        .setFallbackUri("forward:/fallback/products")))
 //                        .filters(f -> f.rewritePath("/products(?<segment>/?.*)",
 //                                "/api/products${segment}"))
                         .uri("lb://PRODUCT-SERVICE"))
