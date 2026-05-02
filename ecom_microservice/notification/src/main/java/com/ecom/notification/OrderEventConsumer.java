@@ -15,6 +15,7 @@ public class OrderEventConsumer {
         System.out.println(orderEvents);
         long orderId = orderEvents.getOrderId();
         OrderStatus orderSatus = orderEvents.getStatus();
+        /// order status
         System.out.println(orderId);
         System.out.println(orderSatus);
         //send Notification
