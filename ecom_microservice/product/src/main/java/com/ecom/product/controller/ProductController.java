@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/product")
+@Slf4j
 public class ProductController {
     private final ProductService service;
     @PostMapping
@@ -48,6 +51,18 @@ public class ProductController {
     public ResponseEntity<String> deleteProduct(@PathVariable Long id ){
         boolean isdeleted = service.removeProduct( id);
         return isdeleted ?  ResponseEntity.ok("Product deleted"): ResponseEntity.notFound().build();
+
+    }
+    @GetMapping("/{id}")
+    public  ResponseEntity<ProductResponse> getproductDetails(@PathVariable Long id){
+        log.info("Id {}", id);
+        log.info("product ->productId :-" + id);
+        ProductResponse   productResponse =  service.getProductById(id);
+        log.info("product details {}", productResponse);
+        ResponseEntity<ProductResponse> productResponseResponseEntity=  productResponse != null ?
+                new ResponseEntity<>(productResponse, HttpStatus.CREATED) :
+                ResponseEntity.notFound().build();
+      return productResponseResponseEntity;
 
     }
 

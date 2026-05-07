@@ -5,6 +5,10 @@ import com.ecom.user.dto.UserRequest;
 import com.ecom.user.dto.UserResponse;
 import com.ecom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +18,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user/api")
+@Slf4j
 public class UserController {
 
     private final UserService userservice;
-
+   // private static Logger log = LoggerFactory.getLogger(UserController.class);
     @GetMapping
     public ResponseEntity<List<UserResponse>> getAllUser() {
         return new ResponseEntity<>(userservice.fetchAllUser(), HttpStatus.OK);
@@ -33,6 +38,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
+        log.info( "user id {}" + id);
         return userservice.fetchUser(id).map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
 

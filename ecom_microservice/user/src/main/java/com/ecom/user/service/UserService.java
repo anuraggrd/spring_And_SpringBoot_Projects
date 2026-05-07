@@ -70,6 +70,7 @@ public class UserService {
 
     private static UserResponse entityToReponse(User user) {
         UserResponse response = new UserResponse();
+        response.setUserId(user.getId());
         response.setFirstName(user.getFirstName());
         response.setLastName(user.getLastName());
         response.setEmail(user.getEmail());
